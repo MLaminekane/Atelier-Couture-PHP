@@ -1,6 +1,6 @@
 {
     "name": "mac/mvc",
-    "description": "Projet gestion Atelier Ism L2 2023",
+    "description": "Projet gestion Atelier Ism L2 S4 2023",
     "autoload": {
         "psr-4": {
             "App\\Core\\": "src/core/",
@@ -10,8 +10,8 @@
     },
     "authors": [
         {
-            "name": "viziodev",
-            "email": "viziodev03@gmail.com"
+            "name": "Lamine",
+            "email": "mlaminekane01@gmail.com"
         }
     ],
     "require-dev": {

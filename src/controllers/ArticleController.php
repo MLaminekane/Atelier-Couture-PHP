@@ -19,26 +19,38 @@ class ArticleController extends Controller{
         $this->articleModel =new ArticleModel; 
        
     }
-    public  function lister(){
-        $articleCModel=new ArticleVenteModel;
-        if(isset($_POST['article'])){
-          if($_POST['article']=="ArticleVenteModel"){
-            $articleCModel=new ArticleVenteModel;
-          }else{
-            $articleCModel=new ArticleConfectionModel ;
-          }
-       
+    public function lister()
+    {
+        if (isset($_POST['article'])) {
+            if ($_POST['article'] == "ArticleVenteModel") {
+                $articleModel = new ArticleVenteModel;
+            } else {
+                $articleModel = new ArticleConfectionModel;
+            }
+        } else {
+            // Si aucune valeur n'est spécifiée, instanciez les deux modèles
+            $articleVenteModel = new ArticleVenteModel;
+            $articleConfectionModel = new ArticleConfectionModel;
+            // Récupérez tous les articles de vente
+            $articlesVente = $articleVenteModel->findAll();
+            // Récupérez tous les articles de confection
+            $articlesConfection = $articleConfectionModel->findAll();
+            // Fusionnez les deux tableaux d'articles
+            $articles = array_merge($articlesVente, $articlesConfection);
         }
-        if(isset($_GET['page'])){
-            $this->currentPage=$_GET['page'];
-         }
-         $this->paginator->setPage($this->currentPage); 
-         $this->paginator ->setItemCount($articleCModel->coutQuery());
-         $articles=$articleCModel->findByPaginate($this->paginator ->getOffset(),$this->paginator ->getLength());
-         $this->render("article/liste.html.php",[
-            "articles"=>$articles
-         ]);
+    
+        if (isset($_GET['page'])) {
+            $this->currentPage = $_GET['page'];
+        }
+        $this->paginator->setPage($this->currentPage);
+        $this->paginator->setItemCount(count($articles));
+        $articles = array_slice($articles, $this->paginator->getOffset(), $this->paginator->getLength());
+    
+        $this->render("article/liste.html.php", [
+            "articles" => $articles
+        ]);
     }
+    
 
     public  function showForm(){
          $categories=  $this->catModel->findAll();

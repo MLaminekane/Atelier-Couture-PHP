@@ -1,0 +1,14 @@
+{
+    "errors":[
+        {
+            "categorie":{
+                "vide": "field is required ",
+                "unique": "field is unique"
+            },
+            "article":{
+                "vide": "le Champ est obligatoire",
+                "unique": "Le libelle est unique"
+            }
+        }
+    ]
+}

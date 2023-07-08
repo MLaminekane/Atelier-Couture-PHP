@@ -11,6 +11,7 @@ if (Session::isset("errors")) {
     Session::unset("data");
 }
 ?>
+<body style="background-color: #0C0C0D" class="text-white">
 <section class="h-screen">
   <div class="container-fluid h-custom">
     <div class="flex justify-center items-center h-full mt-4">
@@ -50,3 +51,6 @@ if (Session::isset("errors")) {
     </div>
   </div>
 </section>
+
+
+</body>

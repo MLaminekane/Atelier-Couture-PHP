@@ -6,7 +6,7 @@ use App\Core\Session;
  }
 ?>
 
-<div class="container my-6 justify-content-center rounded mt-2" style=" height: 90vh;display:block; justify-content: center">
+<div class="container my-6 justify-content-center rounded mt-2" style=" height: 80vh;display:block; justify-content: center; border-radius: 8px">
     <h3 class="text-center display-3 blue-100 lh-1 fw-bold" style="color: white">Liste Categories</h3>
     <div class="w-50 mx-auto mt-6 ">
         <form method="post" action="<?=BASE_URL?>/categorie/create">
@@ -20,7 +20,7 @@ use App\Core\Session;
             <?= $errors['libelle']??"" ?>
         </div>
     </div>
-    <table class="table" style="color:#F7F7F7; margin: 5vh auto; width: 80%;">
+    <table class="table text-black table-bordered" style=" margin: 5vh auto; width: 80%;background-color: #E9F1FA">
         <thead>
             <tr class="text-center">
                 <th>ID</th>
@@ -36,4 +36,6 @@ use App\Core\Session;
             <?php endforeach ?>
         </tbody>
     </table>
+    <div style="margin-right: 8vw"><?php require_once "./../views/inc/paginate.html.php"; ?></div>
+    
 </div>

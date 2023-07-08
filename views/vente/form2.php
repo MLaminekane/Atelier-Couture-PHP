@@ -9,27 +9,26 @@ use App\Core\Session;
     Session::unset("sms");  
 }
 ?>
-<div class=" card w-75 mt-3 d-flex" style="margin-left: 12.5%">
-    <div class=" card-body" style="background-color: #6E6E6E">
+<div class=" card mt-3 d-flex" style="margin-left: 5%; margin-right: 5%" >
+    <div class=" card-body" style="background-color: #6E6E6E;">
+        <div class="d-flex align-items-center ">
         <?php if(!empty($sms)):?>
         <div class="alert alert-info" role="alert">
             <?=$sms??""?>
         </div>
         <?php endif?>
-        <form class="my-3 d-flex" style="margin-left: 10px;" method="post" action="<?=BASE_URL?>/vente/add/client">
-            <div class="mb-3 col-6 ">
-                                <label for="" class="form-label">Client</label>
-                                <select class="form-select form-select-sm" name="client" id="">
-                                    <option selected disabled value="">Choose...</option>
-                                    <?php foreach ($clients as  $value):?>
-                                        <option value="<?=$value->getId()?>"> <?=$value->getNom()?></option>
-                                    <?php endforeach ?>
-                                </select>
-            </div>
-        </form>
-        <form class=" my-3" style="margin-left: 10px;" method="post" action="<?=BASE_URL?>/vente/add/detail">
-            <div class="row d-flex" >
-                <div class="col-6">
+        <form style="display: flex; margin-left: 3vw;" method="post" action="<?=BASE_URL?>/vente/add/client">
+            <div class="row" style="display: flex; justify-content: space-evenly; justify-content: center">
+                <div class="col-4">
+                <label for="" class="form-label">Client</label>
+                <select class="form-select form-select-sm d-flex align-items-center" name="client" id="">
+                    <option selected disabled value="">Choisir...</option>
+                    <?php foreach ($clients as $value):?>
+                        <option value="<?=$value->getId()?>"> <?=$value->getNom()?></option>
+                    <?php endforeach ?>
+                </select>
+                </div>
+                <div class="col-4">
                     <div class="mb-2">
                         <label for="" class="form-label">Article</label>
                         <select class="form-select form-select-md" name="articleID" id="">
@@ -43,21 +42,18 @@ use App\Core\Session;
                     <label for="" class="form-label">Qte Appro</label>
                     <input type="text" class="form-control" name="qteVente" id="" aria-describedby="helpId"
                         placeholder="">
-
                 </div>
                 
                 <div class="col-2 ml-2 mt-1">
                     <label for="" class="form-label"></label>
-                    <button type="submit" class="form-control btn btn-primary mt-1">OK</button>
+                    <button type="submit" class="form-control btn btn-primary">Ajouter</button>
                 </div>
             </div>
-        </form>
-       
-        <h5 class=" card-title " style=" margin-left: 10px;">Liste des Articles a Vendre
-        </h5>
+        </form>  
+        </div>
             <div class="container mt-3">
-                <div class="table-responsive table-bordered" >
-                    <table  class="table" style="width: 87%">
+                <div class="table-responsive table-bordered" style="width: 100%">
+                    <table  class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Article</th>
@@ -91,11 +87,16 @@ use App\Core\Session;
                         </tbody>
                     </table>
                 </div>
-                <form class="my-3 " method="post" action="<?=BASE_URL?>/vente/create">
-                    <div class=" ">
-                        <div class="fw-bold fs-4">Total : <span class="text-danger "><?=$total?> CFA </span> </div>
-                        <button type="submit" style="width: 10vw; margin-left: 50vw: position: fixed" name="save-vente" class="form-control btn btn-primary">Enregister</button>
+                <form class="my-3 d-flex flex-column "method="post" action="<?=BASE_URL?>/vente/create">
+                    <div class="">
+                        <div class="fw-bold fs-4">Total : <span class="text-danger ">
+                                <?=$total?> CFA
+                            </span>
+                        </div>
+                        <button type="submit"5vh" name="save-vente" class="form-control btn btn-primary ">Enregister</button>
+
                     </div>
+
                 </form>
             </div>
     </div>

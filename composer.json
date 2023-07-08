@@ -19,6 +19,7 @@
     },
     "require": {
         "rakit/validation": "^1.4",
-        "nette/utils": "^4.0"
+        "nette/utils": "^4.0",
+        "dompdf/dompdf": "^2.0"
     }
 }

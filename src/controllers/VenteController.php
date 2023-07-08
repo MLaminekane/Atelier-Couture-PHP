@@ -108,42 +108,38 @@ class VenteController extends Controller{
              ]);
       
     }
-    public function save()
-    {
+    public  function save(){
         $clients = $this->clientModel->findAll();
-        $articles = $this->artVenteModel->findAll();
-    
-        if (isset($_POST['save-vente'])) {
-            // Ajouter la vente
-            if (Session::isset("detailsVente")) {
-                $detailsVente = Session::get("detailsVente");
-                $total = Session::get("total");
-                $client = Session::get("client");
-    
-                $this->venteModel->montant = $total;
-                $this->venteModel->reste = $total;
-                $this->venteModel->detailVente = $detailsVente;
-                $this->venteModel->setIdClient($client); // Utilisez setIdClient() pour définir l'ID du client
-    
-                $this->venteModel->insert();
-                $sms = "Article ajouté avec succès pour la vente";
-            } else {
-                $sms = "Veuillez ajouter au moins un article dans la vente";
-            }
-    
-            Session::set("sms", $sms);
-    
-            // Vider le panier
-            Session::unset("detailsVente");
-            Session::unset("total");
-            Session::unset("client");
+        $articles= $this->artVenteModel->findAll();
+        if(isset($_POST['save-vente'])){
+          
+           //Ajouter l'appro
+           if(Session::isset("detailsVente")){
+               $detailsVente=Session::get("detailsVente");
+               $total=  Session::get("total");
+               $client=Session::get("client");
+               
+               $this->venteModel->montant=$total;
+               $this->venteModel->reste=$total;
+               $this->venteModel->detailVente= $detailsVente;
+               $this->venteModel->idClient= $client;
+        
+               $this->venteModel->insert();
+               $sms="Article  ajoutee avec succes pour la vente  ";
+           }else{
+               $sms="Veuillez ajouter au moins un article dans la vente  ";
+           }
+            Session::set("sms",$sms);
+           //Vider Panier
+            Session::unset("detailsVente"); 
+            Session::unset("total"); 
         }
-    
-        $this->render('vente/form.html.php', [
-            'clients' => $clients,
-            'articles' => $articles
-        ]);
-    }
+        
+       $this->render("vente/form.html.php",[
+            "clients"=>$clients, 
+           'articles'=> $articles
+       ]) ;
+     }
 
      public function addDetail(){ 
         //Valider les informations du formulaire 

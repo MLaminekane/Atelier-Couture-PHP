@@ -6,13 +6,13 @@ if(!Role::hasRole("Admin") ) redirect("categorie");
 
 if(Session::isset("errors")) {
     $errors=Session::get("errors")->firstOfAll();
-    //Recuperer les donnees du Formulaire
     $data=Session::get("data");
     Session::unset("errors");  
     Session::unset("data"); 
 }
-?><div class="card mt-5" style="width:40rem; margin-left: 25%; ">
-    <div class="card-body">
+?>
+<div class="card" style="width:40rem; margin-left: 25%;background-color: #E9F1FA ">
+    <div class="card-body" style="background-color: #E9F1FA">
         <h5 class="card-title">Ajouter un Client</h5>
         <form class="row g-3 needs-validation mt-1" method="Post" action="<?=BASE_URL?>/client/create">
             <div class="col-md-10">
@@ -77,9 +77,6 @@ if(Session::isset("errors")) {
 </div>
 
 <script>
-//select-type
-//div-date
-//div-fournisseur
 
 const divDate = document.querySelector("#div-date")
 const selectType = document.querySelector("#select-type")

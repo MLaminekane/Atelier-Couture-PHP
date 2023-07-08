@@ -7,8 +7,8 @@ use App\Core\Session;
     Session::unset("sms");  
 }
 ?>
-<div class="container mt-3">
-    <div class="card">
+<div class="container mt-3" style="background-color: #E9F1FA">
+    <div class="card" style="background-color: #E9F1FA">
          <?php if(!empty($sms)):?>
             <div class="alert alert-info" role="alert" style="background-color: white-red;">
                 <?=$sms??""?>

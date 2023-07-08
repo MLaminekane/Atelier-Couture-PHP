@@ -9,8 +9,8 @@ if (Session::isset("sms")) {
     Session::unset("sms");
 }
 ?>
-<div class="card w-100 mt-3" style="display: flex; flex-direction: row;">
-    <div class="card-body col-6">
+<div class="card w-100" style="display: flex; flex-direction: column;background-color: #E9F1FA">
+    <div class="card-body col-6 " >
         <?php if (!empty($sms)) : ?>
             <div class="alert alert-info" role="alert">
                 <?= $sms ?? "" ?>

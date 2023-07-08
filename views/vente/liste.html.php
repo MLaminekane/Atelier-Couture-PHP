@@ -7,8 +7,8 @@ use App\Core\Session;
     Session::unset("sms");  
 }
 ?>
-<div class="container mt-3" >
-    <div class="card" style="background-color: #6E6E6E">
+<div class="container mt-3 " >
+    <div class="card" style="background-color: #E9F1FA">
          <?php if(!empty($sms)):?>
             <div class="alert alert-info" role="alert" style="background-color: white-red;">
                 <?=$sms??""?>
@@ -17,7 +17,7 @@ use App\Core\Session;
         <div class="card-body">
             <div class="row float-end ">
                 <div class="col-4  ">
-                    <a name="" id="" class="btn btn-info  text-white  " href="<?=BASE_URL?>/vente/create"
+                    <a name="" id="" class="btn btn-primary  text-white  " href="<?=BASE_URL?>/vente/create"
                         role="button">Nouveau</a>
                 </div>
 
@@ -104,7 +104,7 @@ use App\Core\Session;
                                     <?php endif?>
                                     <form method="post" action="<?=BASE_URL?>/vente/detail" style="margin-left:5px;">
                                         <input type="hidden" name="id-vente" value="<?=$vente->id?>">
-                                        <button name="" id="" class=" btn btn-sm btn-info text-white mr-1 "
+                                        <button name="" id="" class="btn btn-primary text-white mr-1 "
                                             type="submit">Voir Details</button>
                                     </form>
                                 </td>

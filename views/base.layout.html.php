@@ -26,11 +26,11 @@ use App\Core\Role;
 
 </head>
 
-<body style="background-color:#14365D">
+<body style="background-color:#0C0C0D ;text-white; width: 100%">
     <header >
         <?php require_once "./../views/inc/nav.html.php"; ?>
     </header>
-    <div>
+    <div style="background-color: #031740; height: 89vh;"> 
         <?=$contentForView?>
     </div>
 

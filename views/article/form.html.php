@@ -7,9 +7,9 @@ Session::unset("errors");
 Session::unset("data");
 }
 ?>
-<div class="card mt-5" style="width:40rem;margin-left: 25%">
-    <div class="card-body rounded" style="background-color:white;">
-        <h3 class="display-3 fw-bold text-black" style="font-size: 25px">Enregistrement</h3>
+<div class="card" style="diaplay-flex; justify-content: center ;width:40rem;margin-left: 25%">
+    <div class="card-body text-black rounded" style="border: 2px solid white;background-color: #E9F1FA">
+        <h3 class="display-3 fw-bold text-black" style="font-size: 25px; margin-top: 5vh">Enregistrement</h3>
         <form class="row g-3 needs-validation mt-1" method="Post" action="<?=BASE_URL?>/article/create">
             <div class="col-md-10">
                 <label for="validationCustom01" class="form-label">Libelle</label>
@@ -86,9 +86,6 @@ Session::unset("data");
 </div>
 
 <script>
-//select-type
-//div-date
-//div-fournisseur
 
 const divDate = document.querySelector("#div-date")
 const selectType = document.querySelector("#select-type")

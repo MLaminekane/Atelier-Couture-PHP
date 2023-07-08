@@ -37,14 +37,11 @@ class AuthController extends Controller{
     public  function showForm(){
         $users=  $this->userModel->findAll();
         $this->render("auth/addUser.html.php",[
-        "users"=>$users,
-        
+        "users"=>$users,     
         ]);
     }
     public function login()
     { 
-      // Validator::isEmail($_POST['login'],"login") ;
-       //Validator::isVide($_POST['password'],"password","Le Mot de Passe est obligatoire") ;
        $validator = new Validator;
        $validation = $validator->make($_POST, [
         'login'                 => 'required|email',
@@ -60,11 +57,6 @@ class AuthController extends Controller{
            if($user==null){
               // Validator::addError("error_connexion","Login ou Mot de Passe incorrect");
            }else{
-               //La session ne stocke pas d'objet
-               //La session peut stoker soit des donnees de type elementaire
-               //soit un tableau
-               //Authentification stateFull 
-               //Connexion ==> Authentification + Autorisation 
                  Session::set("userconnect",toArray($user) );
                  $this->redirect("/categorie");
            }

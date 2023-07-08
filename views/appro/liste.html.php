@@ -5,9 +5,9 @@ if (!Role::hasRole("Admin")) {
 }
 ?>
 
-<div class="container my-6 justify-content-center rounded mt-2" style="background-color: #6E6E6E; height: 90vh; display: block; justify-content: center">
+<div class="container my-6 justify-content-center rounded mt-2" style=" height: 90vh; display: block; justify-content: center">
     <h1 class="text-center display-3 blue-100 lh-1 fw-bold" style="color: white">Liste Approvisionnements</h1>
-    <div class="row mt-6 mx-auto w-50">
+    <div class="row mt-6 mx-auto w-50" >
         <div class="col" >
             <form method="post" action="<?= BASE_URL ?>/appro">
                 <label for="etatPayement" class="text-white">Etat Paiement:</label>
@@ -18,8 +18,8 @@ if (!Role::hasRole("Admin")) {
                     </select>
                     <button type="submit" class="btn btn-primary ml-2">Ok</button>
                 </div>
+
             </form>
-            
         </div>
         <div class="col">
             <?php if (!empty($errors['libelle'])): ?>
@@ -29,11 +29,11 @@ if (!Role::hasRole("Admin")) {
             <?php endif ?>
         </div>
     </div>
-    <div class="table-responsive mt-3 mx-auto" style="width: 80%;">
+    <div class="table-responsive mt-3 mx-auto" style="width: 80%;" >
         <div class="">
-            <a name="" id="" class="btn btn-primary text-white" href="<?=BASE_URL?>/appro/create"role="button">Nouveau</a>
+            <a name="" id="" class="btn btn-primary text-black" href="<?=BASE_URL?>/appro/create"role="button">Nouveau</a>
         </div>
-        <table class="table table-bordered table-light" style="color: #F7F7F7;">
+        <table class="table table-bordered text-black" style="background-color: #E9F1FA">
             <thead>
                 <tr class="text-center">
                     <th>Date</th>
@@ -48,13 +48,13 @@ if (!Role::hasRole("Admin")) {
                         <td><?= $appro->date ?></td>
                         <td><?= $appro->montant ?></td>
                         <td><?= $appro->payer ? "Payé" : "Impayé" ?></td>
-                        <td class="d-flex">
+                        <td class="d-flex justify-content-center">
                             <?php if (!$appro->payer): ?>
                                 <a class="btn btn-sm btn-danger text-white" href="<?= BASE_URL ?>/appro/payement?id-appro=<?= $appro->id ?>" role="button">Valider Paiement</a>
                             <?php endif ?>
-                            <form method="post" action="<?= BASE_URL ?>/appro/detail" style="margin-left: 10vw;">
+                            <form method="post" action="<?= BASE_URL ?>/appro/detail">
                                 <input type="hidden" name="id-appro" value="<?= $appro->id ?>">
-                                <button class="btn btn-sm btn-info text-white mr-1" type="submit" style="margin-left: 20px">Voir Détails</button>
+                                <button class="btn btn-sm btn-info text-white mr-1" type="submit">Voir Détails</button>
                             </form>
                         </td>
                     </tr>
@@ -63,3 +63,4 @@ if (!Role::hasRole("Admin")) {
         </table>
     </div>
 </div>
+

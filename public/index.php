@@ -13,7 +13,6 @@ require_once "./../vendor/autoload.php";
 //Front Controller
 require_once "./../src/core/bootsrap.php";
 
-//Enregistrer les routes
 Router::route("/article",[ArticleController::class,'lister']);
 Router::route("/article/form",[ArticleController::class,'showForm']);
 Router::route("/article/create",[ArticleController::class,'save']);
@@ -34,12 +33,9 @@ Router::route("/appro/detail",[ApproController::class,'detailAppro']);
 Router::route("/appro/payement",[ApproController::class,'validerPayement']);
 Router::route("/appro/add/detail",[ApproController::class,'addDetail']);
 
-
 Router::route("/client",[ClientController::class,'lister']);
 Router::route("/client/add",[ClientController::class,'showForm']);
 Router::route("/client/create",[ClientController::class,'save']);
-
-
 
 Router::route("/vente",[VenteController::class,'index']);
 Router::route("/vente/client",[VenteController::class,'listeVenteClient']);
@@ -49,18 +45,10 @@ Router::route("/vente/add/client",[VenteController::class,'addClient']);
 Router::route("/vente/payement",[VenteController::class,'validerPayement']);
 Router::route("/vente/detail",[VenteController::class,'detailvente']);
 
-
 Router::route("/prod",[ProductionController::class,'index']);
 Router::route("/prod/create",[ProductionController::class,'save']);
 Router::route("/prod/add/detailVente",[ProductionController::class,'addDetailVente']);
 Router::route("/prod/add/detailConf",[ProductionController::class,'addDetailConf']);
 Router::route("/prod/detail",[ProductionController::class,'detail']);
 
-
-
-//showFormLogin
-//Resoudre route
 Router::resolve();
-
-
-//Lister les articles

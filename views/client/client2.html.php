@@ -3,10 +3,10 @@ use App\Core\Role;
  if(!Role::hasRole("Admin") ) redirect("categorie");
 ?>
 
-<div class="container mt-3" style="background-color: #E9F1FA">
+<div class="container mt-3">
     <div class="card" style="background-color: #E9F1FA">
 
-        <div class="card-body">
+        <div class="card-body" style="background-color: #E9F1FA">
             <div class="row float-end ">
                 <div class="col-4  ">
                     <a name="" id="" class="btn btn-info  text-white  " href="<?=BASE_URL?>/client/add"
@@ -16,7 +16,7 @@ use App\Core\Role;
             </div>
             <h4 class="card-title">Liste des Utilisateurs</h4>
             <div class="table table-bordered table-light mt-3">
-                <table class="table table-striped">
+                <table class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -25,7 +25,7 @@ use App\Core\Role;
                             <th scope="col">TELEPHONE </th>
                             <th scope="col">ADRESSE</th>
                             <th scope="col">ETAT</th>
-                            <th scope="col">ACTION</th>
+                            <th scope="col">ACHAT</th>
                            
                         </tr>
                     </thead>

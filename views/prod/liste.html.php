@@ -8,16 +8,16 @@ use App\Core\Session;
 }
 ?>
 <div class="container mt-3">
-    <div class="card">
+    <div class="card" style="background-color: #6E6E6E">
          <?php if(!empty($sms)):?>
             <div class="alert alert-info" role="alert" style="background-color: white-red;">
                 <?=$sms??""?>
             </div>
         <?php endif?>
-        <div class="card-body">
+        <div class="card-body" style="background-color: #E9F1FA">
             <div class="row float-end ">
                 <div class="col-4  ">
-                    <a name="" id="" class="btn btn-info  text-white  " href="<?=BASE_URL?>/prod/create"
+                    <a name="" id="" class="btn btn-primary  text-white  " href="<?=BASE_URL?>/prod/create"
                         role="button">Nouveau</a>
                 </div>
 
@@ -29,13 +29,7 @@ use App\Core\Session;
                 <div class="col">
                         <label for="birthday">Date de Production</label>
                         <input type="date" id="date" name="date">
-                </div>
-
-                <div class="col  " style="margin-top: 30px;">
-                    <div class="mb-3">
-                        <label for="" class="form-label"></label>
                         <input name="" id="" class="btn btn-sm btn-primary" type="submit" value="Ok">
-                    </div>
                 </div>
 
             </form>
@@ -58,7 +52,7 @@ use App\Core\Session;
                                     
                                     <form method="post" action="<?=BASE_URL?>/prod/detail" style="margin-left:5px;">
                                         <input type="hidden" name="id-prod" value="<?=$prod->id?>">
-                                        <button name="" id="" class=" btn btn-sm btn-info text-white mr-1 "
+                                        <button name="" id="" class=" btn btn-primary text-white mr-1 "
                                             type="submit">Voir Details</button>
                                     </form>
                                 </td>

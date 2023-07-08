@@ -15,7 +15,7 @@ class ApproController extends Controller{
     $this->approModel=new ApprovisionnementModel;
     $this->detailApproModel=new DetailApproModel;
   }
-  public  function validerPayement(){
+  public function validerPayement(){
     $approId=$_GET['id-appro'];
     $this->approModel->savePayement($approId);
     $this->redirect("/appro");
@@ -77,16 +77,12 @@ class ApproController extends Controller{
                 $detailsAppro[$pos]["qteAppro"]+=$_POST['qteAppro'];
                 $detailsAppro[$pos]["montant"]+=$montant;
               }
-           
              $total+=$montant;
            Session::set("detailsAppro",$detailsAppro);
            Session::set("total",$total);
            $this->redirect("/appro/create");
-          // dd( $unDetail);
       }
-
-      //Lister les details un Approvisionnement
-      public  function detailAppro(){
+      public function detailAppro(){
         $approId=$_POST['id-appro'];
         $appro= $this->approModel->findById($approId);
         $detailsAppro =$this->detailApproModel->findDetailByAppro(  $approId);
@@ -95,15 +91,14 @@ class ApproController extends Controller{
             'detailsAppro'=> $detailsAppro
         ]) ;
       }
-
-      private function  getPositionDetail(array $data,int $articleId):int{
-         foreach ($data  as  $key=>$value) {
-              if($value['articleId']==$articleId){
-                  return $key;
-              }
-         }
-         return -1;
-        
-      }
+    private function  getPositionDetail(array $data,int $articleId):int{
+        foreach ($data  as  $key=>$value) {
+            if($value['articleId']==$articleId){
+                return $key;
+            }
+        }
+        return -1;
+      
+    }
       
 }

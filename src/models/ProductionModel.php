@@ -35,51 +35,40 @@ class ProductionModel extends Model{
     }
     public function insert()
     {
-        //Transaction  ==> ACID
-        if(count($this->detailProdVente)!=0 && count($this->detailProdConf)!=0){
-            $this->date=dateToString();
-            //Au minimun on un detail 
-            $sql="insert into $this->tableName values(NULL,:date,:montant)";
-            $stmt= $this->pdo->prepare($sql);
-            $stmt->execute([
-                             "date"=>$this->date,  
-                             "montant"=>$this->montant,
-                            ]);
-             $prodID=$this->pdo->lastInsertId() ;  
-            if($prodID!=0){
-                foreach ($this->detailProdVente as $unDetail) {
-                    $this->detailVenteModel->articleID=$unDetail['articleId'];
-                    $this->detailVenteModel->qteVente=$unDetail['qteVente'];
-                    $this->detailVenteModel->prodID= $prodID;
-                    if($this->detailVenteModel->insert()==1){
-                        $this->articleModel->setId($unDetail['articleId']);
-                        $this->articleModel->setQteStock($unDetail['qteStock']+$unDetail['qteVente']) ; 
-                        $this->articleModel->update();
-                    }
-                }
-
-                foreach ($this->detailProdConf as $unDetail) {
-                    $this->detailConfModel->articleID =$unDetail['articleId'];
-                    $this->detailConfModel->qteConf =$unDetail['qteConf'];
-                    $this->detailConfModel->prodID= $prodID;
-                    if($this->detailConfModel->insert()==1){
-                        $this->articleModel->setId($unDetail['articleId']);
-                        $this->articleModel->setQteStock($unDetail['qteStock']-$unDetail['qteConf']) ; 
-                        $this->articleModel->update();
-                    }
-                }
-                //qteStock =10   qteAppro=30   ==>  qteStock=40
-            }
-           return -1;                
+        if(count($this->detailProdVente) == 0 || count($this->detailProdConf) == 0){
+            return -1;
         }
-
+        $this->date = dateToString();
+        $sql = "INSERT INTO $this->tableName VALUES (NULL, :date, :montant)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            "date" => $this->date,
+            "montant" => $this->montant,
+        ]);
+        $prodID = $this->pdo->lastInsertId();
+        if($prodID == 0){
+            return -1;
+        }
+        foreach ($this->detailProdVente as $unDetail) {
+            $this->detailVenteModel->articleID = $unDetail['articleId'];
+            $this->detailVenteModel->qteVente = $unDetail['qteVente'];
+            $this->detailVenteModel->prodID = $prodID;
+            if($this->detailVenteModel->insert() == 1){
+                $this->articleModel->setId($unDetail['articleId']);
+                $this->articleModel->setQteStock($unDetail['qteStock']+$unDetail['qteVente']) ; 
+            }
+        }
+        foreach ($this->detailProdConf as $unDetail) {
+            $this->detailConfModel->articleID = $unDetail['articleId'];
+            $this->detailConfModel->qteConf = $unDetail['qteConf'];
+            $this->detailConfModel->prodID = $prodID;
+            if($this->detailConfModel->insert() == 1){
+                $this->articleModel->setId($unDetail['articleId']);
+                $this->articleModel->setQteStock($unDetail['qteStock']-$unDetail['qteConf']) ; 
+            }
+        }   
         return -1;
-       
     }
-   
-
-
-
 }
 
 

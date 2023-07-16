@@ -4,8 +4,7 @@ use App\Core\Controller;
 class NotFoundController  extends Controller{
     public function __construct()
     {
-        parent::__construct();
-       
+        parent::__construct();  
     }
     public function _404(){
         $not=new NotFoundController;

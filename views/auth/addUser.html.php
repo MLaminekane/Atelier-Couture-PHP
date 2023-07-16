@@ -48,7 +48,6 @@ if(Session::isset("errors")) {
                     <option selected disabled value="">Choose...</option>
                     <option value="Admin ">ADMIN</option>
                     <option value="Rs">RS</option>
-                    <option value="Rp">RP</option>
                     <option value="Vendeur">VENDEUR</option>
 
                 </select>

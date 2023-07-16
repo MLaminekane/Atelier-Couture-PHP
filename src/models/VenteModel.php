@@ -55,7 +55,6 @@ class VenteModel extends Model{
         return $this->query($sql,["idClient"=>$client],true)->nbre;
     }
     
-   
     public function savePayement(int $venteID):int{
         $sql="UPDATE $this->tableName  SET payer=1,reste=0 WHERE  id=:venteID";
         $stmt= $this->pdo->prepare($sql);

@@ -34,7 +34,7 @@ use App\Core\Session;
 
             </form>
             <div class="table table-bordered table-light mt-3">
-                <table  class="table table-dark table-striped">
+                <table  class="table  table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Date</th>
@@ -50,8 +50,8 @@ use App\Core\Session;
                                 <td><?=$prod->montant?></td>
                                 <td class="d-flex">
                                     
-                                    <form method="post" action="<?=BASE_URL?>/prod/detail" style="margin-left:5px;">
-                                        <input type="hidden" name="id-prod" value="<?=$prod->id?>">
+                                    <form  style="margin-left:5px;">
+                                        <input type="hidden" name="id-prod" value="">
                                         <button name="" id="" class=" btn btn-primary text-white mr-1 "
                                             type="submit">Voir Details</button>
                                     </form>

@@ -16,21 +16,21 @@ use App\Core\Session;
             <?=$sms??""?>
         </div>
         <?php endif?>
-        <form class="my-3 d-flex" style="margin-left: 10px;" method="post" action="<?=BASE_URL?>/vente/add/client">
-            <div class="mb-3 col-6 ">
-                                <label for="" class="form-label">Client</label>
-                                <select class="form-select form-select-sm" name="client" id="">
-                                    <option selected disabled value="">Choose...</option>
-                                    <?php foreach ($clients as  $value):?>
-                                        <option value="<?=$value->getId()?>"> <?=$value->getNom()?></option>
-                                    <?php endforeach ?>
-                                </select>
-            </div>
-        </form>
-        <form class=" my-3" style="margin-left: 10px;" method="post" action="<?=BASE_URL?>/vente/add/detail">
+        <div class="d-flex">
+            <form class="my-3 d-flex" style="margin-left: 10px;" method="post" action="<?=BASE_URL?>/vente/add/client">
+                <div class="mb-3">
+                    <label for="" class="form-label">Client</label>
+                    <select class="form-select form-select-sm" name="client" id="">
+                        <option selected disabled value="">Choose...</option>
+                        <?php foreach ($clients as  $value):?>
+                            <option value="<?=$value->getId()?>"> <?=$value->getNom()?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+            </form>
+            <form class=" my-3" style="margin-left: 10px;" method="post" action="<?=BASE_URL?>/vente/add/detail">
             <div class="row d-flex" >
-                <div class="col-6">
-                    <div class="mb-2">
+                    <div class="mb-3 col-3">
                         <label for="" class="form-label">Article</label>
                         <select class="form-select form-select-md" name="articleID" id="">
                             <?php foreach($articles as $article):?>
@@ -38,8 +38,7 @@ use App\Core\Session;
                             <?php endforeach ?>
                         </select>
                     </div>
-                </div>
-                <div class="mb-2 col-2">
+                <div class="mb-3 col-2">
                     <label for="" class="form-label">Qte Appro</label>
                     <input type="text" class="form-control" name="qteVente" id="" aria-describedby="helpId"
                         placeholder="">
@@ -52,6 +51,9 @@ use App\Core\Session;
                 </div>
             </div>
         </form>
+        </div>
+
+
        
         <h5 class=" card-title " style=" margin-left: 10px;">Liste des Articles a Vendre
         </h5>
@@ -81,10 +83,6 @@ use App\Core\Session;
                                 <td> <?=$detail['prix']?> </td>
                                 <td> <?=$detail['qteVente']?> </td>
                                 <td> <?=$detail['montant']?></td>
-                                <td>
-                                    <a class="btn btn-danger btn-sm mr-2" href="#" role="button">-</a>
-                                    <a class="btn btn-success btn-sm " href="#" role="button">+</a>
-                                </td>
                             </tr>
                             <?php endforeach ?>
                             <?php endif ?>
